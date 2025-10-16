@@ -2,12 +2,10 @@ site_name: Wiki
 nav:
   - Home: index.md
   - Network:
-    - Ethernet: network/ethernet.md
-    - TCP: network/tcp.md
-    - IP: network/ip.md
+    - Ethernet: network/ethernetTcpIp.md
 
   - Subject to study:
-    - Ski : study/ski.md
+    - hackathon  Santé Conneté : study/hackathon.md
   
 theme: 
   name: readthedocs
