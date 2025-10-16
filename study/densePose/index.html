@@ -81,6 +81,18 @@
                   <li class="toctree-l1"><a class="reference internal" href="../ocs/">OCS Inventory</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">DensePose WIFI</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#chaneel-state-information">Chaneel state information</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-1-nettoyage-du-signal">Etape 1 : Nettoyage du signal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-2-modality-translation-network">Etape 2 : Modality Translation Network</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-3-detection-de-pose">Etape 3 : Detection de Pose</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#questions">Questions ?</a>
+    </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -107,7 +119,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="detecter-des-humains-avec-les-signaux-wifi">Detecter des humains avec les signaux WIFI</h1>
+<p>En juillet dernier, j'ai vu sur X un tweet intéressant qui parlait d'une feuille de recherche sortie et qui traitait le sujet de la détection de la pose des personnes à partir d'un signal Wi-Fi. Bien que l'idée semble fascinante au premier abord, l'appliquer reste compliquée.</p>
+<p>Dans ce qui suit, j'expliquerai ce que j'ai compris jusqu'à ce moment-là en lisant cette feuille.</p>
+<p>Situation initiale : Dans une pièce, on dépose deux routeurs Wi-Fi et un humain.</p>
+<h3 id="chaneel-state-information">Chaneel state information</h3>
+<p>Ou bien, le CSI, c'est un rapport entre le signal que nous avons émis et ce que nous avons reçu.</p>
+<p>le signal CSI est composée de 2 choses : 
+- l'amplitude
+- la phase (riche d'information sur la pose humaine)</p>
+<p>un tenseur : un tableau avec 3 dimension ou plus.</p>
+<p>Le signal CSI est mesuré pour 3 émetteurs, 3 récepteurs, et 5 échantillons consécutifs sur 30 fréquences différentes.</p>
+<p>ce que nous aurons en entree ce sont 2 tenseurs (tableau de 150<em>3</em>3) un pour l'amplitude et l'autre pour la phase.</p>
+<h3 id="etape-1-nettoyage-du-signal">Etape 1 : Nettoyage du signal</h3>
+<h3 id="etape-2-modality-translation-network">Etape 2 : Modality Translation Network</h3>
+<p>Les deux informations (l'amplitude et la phase) sont séparées dans cette étape. On essaie d'aplatir chaque tenseur, puis de faire un certain encodage et, enfin, une fusion pour avoir un long vecteur 1D.</p>
+<p>Après, on fait un reshape, ensuite une extraction spatiale et on génère notre fausse image.</p>
+<p>Le résultat est une fausse image qui sera regardée par un autre modèle dans l'étape 3.</p>
+<h3 id="etape-3-detection-de-pose">Etape 3 : Detection de Pose</h3>
+<p>À partir de l'image, et à l'aide d'un réseau de neurones, on obtient notre pose.</p>
+<h2 id="questions">Questions ?</h2>
+<ul>
+<li>Les routeurs sont-ils des routeurs normaux ?</li>
+<li>Comment le CSI est-il transféré ?</li>
+<li>La prochaine fois, concentre-toi plus sur le vecteur 1D que nous avons eu en étape 2.</li>
+</ul>
               
             </div>
           </div><footer>
