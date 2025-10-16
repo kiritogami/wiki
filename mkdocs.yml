@@ -1,7 +1,14 @@
 site_name: Wiki 
 nav:
   - Home: index.md
-  - About: about.md
+  - Network:
+    - Ethernet: ethernet.md
+    - TCP: tcp.md
+    - IP: ip.md
+
+  - Subject to study:
+    - Ski : ski.md
+  
 theme: 
   name: readthedocs
   color_mode: dark
