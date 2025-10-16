@@ -1,6 +1,7 @@
 site_name: Wiki 
 nav:
   - Home: index.md
+  - Git: git.md
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
 
