@@ -3,21 +3,18 @@
 En juillet dernier, j'ai vu sur X un tweet intéressant qui parlait d'une feuille de recherche sortie et qui traitait le sujet de la détection de la pose des personnes à partir d'un signal Wi-Fi. Bien que l'idée semble fascinante au premier abord, l'appliquer reste compliquée.
 
 Dans ce qui suit, j'expliquerai ce que j'ai compris jusqu'à ce moment-là en lisant cette feuille.
-
 Situation initiale : Dans une pièce, on dépose deux routeurs Wi-Fi et un humain.
 
 ### Chaneel state information
 
-Ou bien, le CSI, c'est un rapport entre le signal que nous avons émis et ce que nous avons reçu.
+Ou bien, le CSI, c'est un rapport entre le signal que nous avons émis et ce que nous avons reçu.  
 
 le signal CSI est composée de 2 choses : 
-- l'amplitude
-- la phase (riche d'information sur la pose humaine)
+- l'amplitude.  
+- la phase (riche d'information sur la pose humaine).  
 
 un tenseur : un tableau avec 3 dimension ou plus.
-
 Le signal CSI est mesuré pour 3 émetteurs, 3 récepteurs, et 5 échantillons consécutifs sur 30 fréquences différentes.
-
 ce que nous aurons en entree ce sont 2 tenseurs (tableau de 150*3*3) un pour l'amplitude et l'autre pour la phase.
 
 ### Etape 1 : Nettoyage du signal 
