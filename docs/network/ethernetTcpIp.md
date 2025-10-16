@@ -7,6 +7,7 @@ Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés :
 
 ### Format d'une trame Ethernet 
 
+---
 
 ``` 
 +--------------------------------------------------------+
@@ -40,6 +41,7 @@ Le rôle de la couche 3 est de relier les différentes réseaux.
 |                         Données                             |
 +-------------------------------------------------------------+
 ```
+---
 
 ## TCP
 

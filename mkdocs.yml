@@ -5,10 +5,17 @@ nav:
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
 
-  - Subject to study:
-    - hackathon  Santé Conneté : study/hackathon.md
+  - Travaux:
+    - hackathon Santé Conneté : study/hackathon.md
   
 theme: 
   name: readthedocs
   color_mode: dark
   highlightjs: true
+
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: timeago 
+      locale: fr 
