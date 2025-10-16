@@ -2,7 +2,7 @@ site_name: Wiki
 nav:
   - Home: index.md
   - Network:
-    - Ethernet: network/ethernetTcpIp.md
+    - Ethernet TCP IP: network/ethernetTcpIp.md
 
   - Subject to study:
     - hackathon  Santé Conneté : study/hackathon.md
