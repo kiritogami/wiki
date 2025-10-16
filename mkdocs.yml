@@ -4,9 +4,14 @@ nav:
   - Git: git.md
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
+    - SSH: network/ssh.md
+    - DNS: network/dns.md
+    - Routage: network/routage.md
 
   - Travaux:
     - hackathon Santé Conneté : study/hackathon.md
+    - OCS Inventory: study/ocs.md
+    - DensePose WIFI: study/densePose.md
   
 theme: 
   name: readthedocs

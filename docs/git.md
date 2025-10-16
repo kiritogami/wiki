@@ -2,7 +2,7 @@
 
 *Dernière mise à jour : {{ git_revision_date_localized }}*
 
-## 1. Comment déposer un projet sur GitHub/GitLab
+## Comment déposer un projet sur GitHub/GitLab
 
 ### Étape 1 : Initialisation
 * Le projet est dans un dossier ; on ouvre le terminal bien sûr dans le dossier et on initialise avec un dépôt git : `git init`

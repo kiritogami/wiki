@@ -4,6 +4,7 @@
 
 Chercher l'information a toujours été une phase compliquée, surtout avec l'augmentation exponentielle des informations qui existent sur Internet. Cette documentation a un seul objectif : si j'ai cherché quelque chose, je le noterai ici et, au lieu de faire une nouvelle recherche, je consulterai simplement ma documentation.
 
+**Remarque :  Cette documentation est toujours en cours de finalisation. Je la mets à jour en transférant mes anciennes notes (OneNote et papier) dès que mon emploi du temps le permet.**
 
 ## Qui je suis ? 
 
