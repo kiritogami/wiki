@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Git - Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Git";
+        var mkdocs_page_input_path = "git.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Git</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#etape-1-initialisation">Étape 1 : Initialisation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-2-committer-les-fichiers">Étape 2 : Committer les fichiers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-3-creation-du-depot-distant">Étape 3 : Création du dépôt distant</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etape-4-push-ton-code">Étape 4 : Push ton code</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../network/ethernetTcpIp/">Ethernet TCP IP</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Subject to study</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../study/hackathon/">hackathon  Santé Conneté</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Git</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="1-comment-deposer-un-projet-sur-githubgitlab">1. Comment déposer un projet sur GitHub/GitLab</h2>
+<h3 id="etape-1-initialisation">Étape 1 : Initialisation</h3>
+<ul>
+<li>Le projet est dans un dossier ; on ouvre le terminal bien sûr dans le dossier et on initialise avec un dépôt git : <code>git init</code></li>
+</ul>
+<hr />
+<h3 id="etape-2-committer-les-fichiers">Étape 2 : Committer les fichiers</h3>
+<ul>
+<li>La première chose à faire c'est de pré-ranger les fichiers à déposer : dans le premier dépôt nous on veut déposer tous le dossier donc on indique <strong>"."</strong> pour préciser que c'est le dossier courant qui contient tous les fichiers. On tape la commande suivante : <code>git add .</code></li>
+<li>Après on enregistre ce qu'on a préparé avant (on fait ça avec la commande commit) et on ajoute un message : <code>git commit -m "Initial commit"</code></li>
+</ul>
+<hr />
+<h3 id="etape-3-creation-du-depot-distant">Étape 3 : Création du dépôt distant</h3>
+<ul>
+<li>Sur GitHub/GitLab je dois créer un dossier ; et après j'obtiendrai un URL de projet</li>
+<li>Après je dois ajouter un dépôt distant pour créer le lien entre mon PC et GitHub/GitLab avec la commande : <code>git remote add &lt;NAME&gt; &lt;URL&gt;</code><ul>
+<li><strong>Name :</strong> C'est juste un alias de l'URL pour ne pas le répéter dans tous les commandes.</li>
+</ul>
+</li>
+<li>Pour vérifier les dépôts distants déjà configurés on tape : <code>git remote -v</code></li>
+<li>Pour changer l'URL d'un dépôt qui existe déjà : <code>git remote set-url &lt;NAME&gt; &lt;New URL&gt;</code></li>
+</ul>
+<hr />
+<h3 id="etape-4-push-ton-code">Étape 4 : Push ton code</h3>
+<ul>
+<li>Avant de pousser le code je dois créer un branch sur lequel je pousse ; on fait ça avec la commande : <code>git branch &lt;nom branch&gt;</code></li>
+<li>Maintenant on doit envoyer nos commits qui sont local avec la commande : <code>git push -u &lt;name of distant depot&gt; &lt;branche envoyée&gt;</code></li>
+</ul>
+<hr />
+<h2 id="questions">Questions</h2>
+<h3 id="questions-generales">Questions Générales</h3>
+<ul>
+<li>Si j'ai poussé un code dans une branche est-ce que je peux annulé cette action ?</li>
+<li>supposons que j'ai commité un fichier 1 et après je l'ai pas pousser mais j'ai commité un autre fichier 2 est-ce que lorsque je vais pousser ça va être le fichier 1 ou le premier ?</li>
+</ul>
+<h3 id="reponses">Réponses</h3>
+<ul>
+<li><strong>Quand on pousse :</strong> ce sont tous les fichiers qui n'ont pas été pousser qui le vont être ; donc c'est le premier et le deuxième.<ul>
+<li>Avec la commande : <code>git log alias/branche_name</code> on peut voir les commits qui n'ont pas été encore poussés.</li>
+</ul>
+</li>
+</ul>
+<h3 id="afficher-les-branches">Afficher les Branches</h3>
+<ul>
+<li>Comment on peut voir les branches qui existent déjà ?<ul>
+<li>Avec la commande : <code>git branch</code></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../network/ethernetTcpIp/" class="btn btn-neutral float-right" title="Ethernet TCP IP">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../network/ethernetTcpIp/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
