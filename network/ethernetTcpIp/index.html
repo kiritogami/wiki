@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Ethernet - Wiki</title>
+    <title>Ethernet TCP IP - Wiki</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Ethernet";
+        var mkdocs_page_name = "Ethernet TCP IP";
         var mkdocs_page_input_path = "network/ethernetTcpIp.md";
         var mkdocs_page_url = null;
       </script>
@@ -45,11 +45,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Network</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Ethernet</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Ethernet TCP IP</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#project-layout">Project layout</a>
+    <li class="toctree-l2"><a class="reference internal" href="#format-dune-trame-ethernet">Format d'une trame Ethernet</a>
     </li>
     </ul>
                   </li>
@@ -74,7 +72,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Network</li>
-      <li class="breadcrumb-item active">Ethernet</li>
+      <li class="breadcrumb-item active">Ethernet TCP IP</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -83,20 +81,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+                <h2 id="ethernet">Ethernet</h2>
+<p>Le rôle de la couche 2 est de relier les machines qui sont dans le même réseau local.
+Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés : 
+- WIFI
+- Ethernet </p>
+<h3 id="format-dune-trame-ethernet">Format d'une trame Ethernet</h3>
+<pre><code>+--------------------------------------------------------+
+| MAC DEST | MAC SRC | Protocole Couche 3 | Data |  CRC  |
++--------------------------------------------------------+
+</code></pre>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>Le protocole de la couche 3 est codé sur 2 octets et le CRC sur 4 octets.</li>
+<li>La taille minimale d'une trame ethernet est 64 octets.</li>
+<li>La taille maximale d'une trame ethernet est 1518 octets.</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+<h2 id="ip">IP</h2>
+<p>Le rôle de la couche 3 est de relier les différentes réseaux.</p>
+<h3 id="format-dune-trame-ipv4">Format d'une trame IPv4</h3>
+<pre><code>+-------------------------------------------------------------+
+|  Ver.  |  HLEN  |  TOS   |    Longueur Totale (16 bits)     |
++-----+------+---------+--------------------------------------+
+|  Identifiant (16 bits)   | Flags |    Décalage Fragment     |
++-------------------------------------------------------------+
+| TTL | Protocole couche 4 |             Checksum             |
++-----------------------+-------------------------------------+
+|                 Adresse Source IP                           |
++-------------------------------------------------------------+
+|                 Adresse Destination IP                      |
++-------------------------------------------------------------+
+| Options (Variable : 0 à 40 octets) |  Padding (Rembourrage) |
++------------------------------------+------------------------+
+|                         Données                             |
++-------------------------------------------------------------+
+</code></pre>
+<h2 id="tcp">TCP</h2>
+<p>Le rôle de la couche 4 est de faire diagloguer les applicatif</p>
+<h3 id="format-dun-segment-tcp">Format d'un segment TCP</h3>
+<pre><code>+-------------------------------------------------------------+
+|        port source       |         Port destination         |
++-----+------+---------+--------------------------------------+
+|                nombre de sequence                           |
++-------------------------------------------------------------+
+|                     nombre ack                              |
++-------------------------------------------------------------+
+|          flags           |          windows                 |
++-------------------------------------------------------------+
+|        Checksum          |        Urgent Pointer            |  
++-------------------------------------------------------------+
+| Options (Variable : 0 à 40 octets) |  Padding (Rembourrage) |
++------------------------------------+------------------------+
+|                         Données                             |
++-------------------------------------------------------------+
 </code></pre>
               
             </div>
