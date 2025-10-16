@@ -2,12 +2,12 @@ site_name: Wiki
 nav:
   - Home: index.md
   - Network:
-    - Ethernet: ethernet.md
-    - TCP: tcp.md
-    - IP: ip.md
+    - Ethernet: network/ethernet.md
+    - TCP: network/tcp.md
+    - IP: network/ip.md
 
   - Subject to study:
-    - Ski : ski.md
+    - Ski : study/ski.md
   
 theme: 
   name: readthedocs
