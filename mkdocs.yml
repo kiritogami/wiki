@@ -10,9 +10,10 @@ nav:
     - Snmp: network/Snmp.md
     - SDN:
       - Software defined network: network/SDN/sdn.md
+      - P4 language: network/SDN/p4.md
 
   - Storage:
-    - NAS et SAN : Storage/san&nas.md
+    - NAS et SAN : storage/san&nas.md
 
   - Travaux:
     - hackathon Santé Conneté : study/hackathon.md
