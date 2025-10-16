@@ -7,6 +7,12 @@ nav:
     - SSH: network/ssh.md
     - DNS: network/dns.md
     - Routage: network/routage.md
+    - Snmp: network/Snmp.md
+    - SDN:
+      - Software defined network: network/SDN/sdn.md
+
+  - Storage:
+    - NAS et SAN : Storage/san&nas.md
 
   - Travaux:
     - hackathon Santé Conneté : study/hackathon.md
