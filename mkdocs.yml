@@ -4,6 +4,7 @@ nav:
   - Git: git.md
   - Cisco Conf:
     - VLAN et routage inter VLAN: cisco/interVlan.md
+    - LACP: cisco/lacp.md
     
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
