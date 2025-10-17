@@ -3,7 +3,7 @@ nav:
   - Home: index.md
   - Git: git.md
   - Cisco Conf:
-    - Configurer routage inter VLAN: cisco/interVlan.md
+    - VLAN et routage inter VLAN: cisco/interVlan.md
     
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
