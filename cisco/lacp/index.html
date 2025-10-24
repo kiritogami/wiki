@@ -130,18 +130,18 @@
               
                 <h1 id="lacp-link-agregation-control-protocol">LACP (Link agregation control protocol)</h1>
 <h2 id="configuration-lacp">configuration LACP</h2>
-<pre><code>Switch(config)#interface range fa 0/1-2
+<p><div class="highlight"><pre><span></span><code>Switch(config)#interface range fa 0/1-2
 Switch(config-if-range)# channel group 1 mode active
 Switch(config-if-range)# exit
-</code></pre>
-<p><strong>Dans le cas si on veut la modifier on liaison trunk</strong></p>
-<pre><code>Switch(config)#interface port-channel 1
+</code></pre></div>
+<strong>Dans le cas si on veut la modifier on liaison trunk</strong></p>
+<div class="highlight"><pre><span></span><code>Switch(config)#interface port-channel 1
 Switch(config-if)#switch port mode trunk
 Switch(config-if)#switch port trunk allowed vlan 10,20
-</code></pre>
+</code></pre></div>
 <h2 id="depannage-lacp">Depannage LACP</h2>
-<pre><code>Switch#show etherchannel summry
-</code></pre>
+<div class="highlight"><pre><span></span><code>Switch#show etherchannel summry
+</code></pre></div>
               
             </div>
           </div><footer>
@@ -183,6 +183,8 @@ Switch(config-if)#switch port trunk allowed vlan 10,20
     <script src="../../js/theme.js"></script>
       <script src="../../js/timeago.min.js"></script>
       <script src="../../js/timeago_mkdocs_material.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -146,60 +146,60 @@
               
                 <h1 id="configuration-vlan">Configuration VLAN</h1>
 <h2 id="creation-des-vlan">Creation des VLAN</h2>
-<pre><code>Switch&gt; enable
+<div class="highlight"><pre><span></span><code>Switch&gt; enable
 Switch# conf t
 Switch(config)# vlan 10
 Switch(config-vlan)# name student  // pas obligatoire juste si on veut attribuer un nom
 Switch(config-vlan)#end
-</code></pre>
+</code></pre></div>
 <h2 id="attribution-de-ports">Attribution de ports</h2>
 <h3 id="comment-on-affiche-la-liste-des-ports-et-vlan">Comment on affiche la liste des ports et vlan ?</h3>
-<pre><code>Switch# show vlan brief
-</code></pre>
+<div class="highlight"><pre><span></span><code>Switch# show vlan brief
+</code></pre></div>
 <h3 id="configuration">Configuration</h3>
-<pre><code>Switch# interface Fa0/12
+<div class="highlight"><pre><span></span><code>Switch# interface Fa0/12
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 10
 Switch(config-if)# no shutdown
 Switch(config-if)# end
-</code></pre>
+</code></pre></div>
 <h2 id="trunks">Trunks</h2>
-<pre><code>Switch(config)# interface Fa0/14
+<div class="highlight"><pre><span></span><code>Switch(config)# interface Fa0/14
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk native vlan 99
 Switch(config-if)# switchport trunk allowed vlan 10,20
 Switch(config-if)#end
-</code></pre>
-<p><strong>Pour vérifier</strong></p>
-<pre><code>Switch#show interfaces Fa0/12 switchport
-</code></pre>
+</code></pre></div>
+<p><strong>Pour vérifier</strong>
+<div class="highlight"><pre><span></span><code>Switch#show interfaces Fa0/12 switchport
+</code></pre></div></p>
 <h2 id="delete-vlan-trunks-acces-port">Delete VLAN , Trunks , Acces port</h2>
-<p><strong>Avant de supprimer un vlan réattribuer d'abord tous les port</strong></p>
-<pre><code>Switch(config)# no vlan 20
-</code></pre>
-<pre><code>Switch(config)# interface Fa0/12
+<p><strong>Avant de supprimer un vlan réattribuer d'abord tous les port</strong>
+<div class="highlight"><pre><span></span><code>Switch(config)# no vlan 20
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>Switch(config)# interface Fa0/12
 Switch(config-if)# no switchport access vlan 
 Switch(config-if)# end 
-</code></pre>
-<pre><code>Switch(config)# interface Fa0/14
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Switch(config)# interface Fa0/14
 Switch(config-if)# no switchport trunk allowed vlan 
 Switch(config-if)# no switchport trunk native vlan
 Switch(config-if)# end  
-</code></pre>
+</code></pre></div>
 <h2 id="routage-inter-vlan-router-on-a-stick">Routage Inter-VLAN (router-on-a-stick)</h2>
 <p>Pour chaque vlan routable on crée une sous interface</p>
 <h3 id="creation-de-sous-interface">Création de sous-interface</h3>
-<pre><code>Routeur(config)#interface G0/0/0.10
+<div class="highlight"><pre><span></span><code>Routeur(config)#interface G0/0/0.10
 Routeur(config-subif)#description default gateway for vlan 10
 Routeur(config-subif)#encapsulation dot1Q 10
 Routeur(config-subif)#ip add 192.168.10.1 255.255.255.0
-</code></pre>
-<p><strong>Activer le port à la fin</strong></p>
-<pre><code>Routeur(config)#interface G0/0/0
+</code></pre></div>
+<p><strong>Activer le port à la fin</strong>
+<div class="highlight"><pre><span></span><code>Routeur(config)#interface G0/0/0
 Routeur(config-if)#switchport mode trunk
 Routeur(config-if)#no shut
 Routeur(config-if)#end
-</code></pre>
+</code></pre></div></p>
               
             </div>
           </div><footer>
@@ -241,6 +241,8 @@ Routeur(config-if)#end
     <script src="../../js/theme.js"></script>
       <script src="../../js/timeago.min.js"></script>
       <script src="../../js/timeago_mkdocs_material.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

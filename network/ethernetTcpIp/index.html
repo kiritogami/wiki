@@ -133,19 +133,17 @@ Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés :
 - Ethernet </p>
 <h3 id="format-dune-trame-ethernet">Format d'une trame Ethernet</h3>
 <hr />
-<pre><code>+--------------------------------------------------------+
+<p><div class="highlight"><pre><span></span><code>+--------------------------------------------------------+
 | MAC DEST | MAC SRC | Protocole Couche 3 | Data |  CRC  |
 +--------------------------------------------------------+
-</code></pre>
-<ul>
-<li>Le protocole de la couche 3 est codé sur 2 octets et le CRC sur 4 octets.</li>
-<li>La taille minimale d'une trame ethernet est 64 octets.</li>
-<li>La taille maximale d'une trame ethernet est 1518 octets.</li>
-</ul>
+</code></pre></div>
+- Le protocole de la couche 3 est codé sur 2 octets et le CRC sur 4 octets.
+- La taille minimale d'une trame ethernet est 64 octets.
+- La taille maximale d'une trame ethernet est 1518 octets.</p>
 <h2 id="ip">IP</h2>
 <p>Le rôle de la couche 3 est de relier les différentes réseaux.</p>
 <h3 id="format-dune-trame-ipv4">Format d'une trame IPv4</h3>
-<pre><code>+-------------------------------------------------------------+
+<h2 id="-ver-hlen-tos-longueur-totale-16-bits-identifiant-16-bits-flags-decalage-fragment-ttl-protocole-couche-4-checksum-adresse-source-ip-adresse-destination-ip-options-variable-0-a-40-octets-padding-rembourrage-donnees-"><div class="highlight"><pre><span></span><code>+-------------------------------------------------------------+
 |  Ver.  |  HLEN  |  TOS   |    Longueur Totale (16 bits)     |
 +-----+------+---------+--------------------------------------+
 |  Identifiant (16 bits)   | Flags |    Décalage Fragment     |
@@ -160,12 +158,11 @@ Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés :
 +------------------------------------+------------------------+
 |                         Données                             |
 +-------------------------------------------------------------+
-</code></pre>
-<hr />
+</code></pre></div></h2>
 <h2 id="tcp">TCP</h2>
 <p>Le rôle de la couche 4 est de faire diagloguer les applicatif</p>
 <h3 id="format-dun-segment-tcp">Format d'un segment TCP</h3>
-<pre><code>+-------------------------------------------------------------+
+<div class="highlight"><pre><span></span><code>+-------------------------------------------------------------+
 |        port source       |         Port destination         |
 +-----+------+---------+--------------------------------------+
 |                nombre de sequence                           |
@@ -180,7 +177,7 @@ Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés :
 +------------------------------------+------------------------+
 |                         Données                             |
 +-------------------------------------------------------------+
-</code></pre>
+</code></pre></div>
               
             </div>
           </div><footer>
@@ -222,6 +219,8 @@ Parmi les protocoles de la couche 2, on trouve  les deux plus utilisés :
     <script src="../../js/theme.js"></script>
       <script src="../../js/timeago.min.js"></script>
       <script src="../../js/timeago_mkdocs_material.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

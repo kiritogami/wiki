@@ -182,15 +182,15 @@
 <p>Pour les gens qui detestent le mecanique, je vous conseille ignorer cette partie et rediriger vous directement vers la partie de scénario normal / anormal. </p>
 <h3 id="loi-de-newton">Loi de Newton :</h3>
 <p>La seconde loi de Newton est simple ; la somme des forces appliquées est égale au produit de la masse et de l'accélération. Dans notre cas, trois forces s'appliquent : la force de gravité, la résistance de la neige et la résistance de l'air.</p>
-<p>$$ F_g = m \cdot g \cdot \sin(\theta)$$
+<div class="arithmatex">\[ F_g = m \cdot g \cdot \sin(\theta)$$
 $$ F_n = \mu \cdot N$$
-$$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2$$</p>
-<p>$\mu$ represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.</p>
+$$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2\]</div>
+<p><span class="arithmatex">\(\mu\)</span> represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.</p>
 <p>$ C_D \cdot A$ mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale</p>
-<p>Sans détailler les calculs, pour un instant $t_{i+1}$ :</p>
-<p>$$a_{i+1} = \frac{\mathbf{F}<em>{\text{sommes}}}{m} = \frac{\mathbf{F}</em>{\mathbf{g}} - (\mathbf{F}<em>{\mathbf{neige}} + \mathbf{F}</em>{\mathbf{air}})}{m}$$</p>
-<p>$$\mathbf{v}<em>{i+1} = \mathbf{v}_i + \mathbf{a}</em>{i+1} \cdot \mathbf{\Delta t}$$</p>
-<p>$$\mathbf{x}<em>{i+1} = \mathbf{x}_i + \mathbf{v}</em>{i+1} \cdot \mathbf{\Delta t}$$</p>
+<p>Sans détailler les calculs, pour un instant <span class="arithmatex">\(t_{i+1}\)</span> :</p>
+<div class="arithmatex">\[a_{i+1} = \frac{\mathbf{F}_{\text{sommes}}}{m} = \frac{\mathbf{F}_{\mathbf{g}} - (\mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})}{m}\]</div>
+<div class="arithmatex">\[\mathbf{v}_{i+1} = \mathbf{v}_i + \mathbf{a}_{i+1} \cdot \mathbf{\Delta t}\]</div>
+<div class="arithmatex">\[\mathbf{x}_{i+1} = \mathbf{x}_i + \mathbf{v}_{i+1} \cdot \mathbf{\Delta t}\]</div>
 <p>Les valeurs initiales que je dois fournir sont :</p>
 <table>
 <thead>
@@ -206,72 +206,72 @@ $$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2$$</p>
 <tr>
 <td style="text-align: left;"><strong>Conditions Initiales</strong></td>
 <td style="text-align: left;">Position initiale</td>
-<td style="text-align: left;">$\mathbf{x_0}$</td>
+<td style="text-align: left;"><span class="arithmatex">\(\mathbf{x_0}\)</span></td>
 <td style="text-align: left;">Point de départ de la mesure de distance le long de la pente.</td>
-<td style="text-align: left;">Généralement $\mathbf{0} \text{ m}$.</td>
+<td style="text-align: left;">Généralement <span class="arithmatex">\(\mathbf{0} \text{ m}\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Conditions Initiales</strong></td>
 <td style="text-align: left;">Vitesse initiale</td>
-<td style="text-align: left;">$\mathbf{v_0}$</td>
-<td style="text-align: left;">Vitesse du skieur au tout début de la simulation ($t=0$).</td>
-<td style="text-align: left;">Une valeur choisie ($\ge 0 \text{ m/s}$), ex: $5 \text{ m/s}$.</td>
+<td style="text-align: left;"><span class="arithmatex">\(\mathbf{v_0}\)</span></td>
+<td style="text-align: left;">Vitesse du skieur au tout début de la simulation (<span class="arithmatex">\(t=0\)</span>).</td>
+<td style="text-align: left;">Une valeur choisie (<span class="arithmatex">\(\ge 0 \text{ m/s}\)</span>), ex: <span class="arithmatex">\(5 \text{ m/s}\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Constante Physique</strong></td>
 <td style="text-align: left;">Masse du système</td>
-<td style="text-align: left;">$m$</td>
+<td style="text-align: left;"><span class="arithmatex">\(m\)</span></td>
 <td style="text-align: left;">Masse totale du skieur et de son équipement.</td>
-<td style="text-align: left;">Ex: $80 \text{ kg}$.</td>
+<td style="text-align: left;">Ex: <span class="arithmatex">\(80 \text{ kg}\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Constante Physique</strong></td>
 <td style="text-align: left;">Gravité</td>
-<td style="text-align: left;">$g$</td>
+<td style="text-align: left;"><span class="arithmatex">\(g\)</span></td>
 <td style="text-align: left;">Accélération due à la pesanteur terrestre.</td>
-<td style="text-align: left;">$\approx 9.81 \text{ m/s}^2$.</td>
+<td style="text-align: left;"><span class="arithmatex">\(\approx 9.81 \text{ m/s}^2\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Constante Physique</strong></td>
 <td style="text-align: left;">Densité de l'air</td>
-<td style="text-align: left;">$\rho$</td>
+<td style="text-align: left;"><span class="arithmatex">\(\rho\)</span></td>
 <td style="text-align: left;">Masse de l'air par unité de volume.</td>
-<td style="text-align: left;">$\approx 1.225 \text{ kg/m}^3$.</td>
+<td style="text-align: left;"><span class="arithmatex">\(\approx 1.225 \text{ kg/m}^3\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Paramètre Piste</strong></td>
 <td style="text-align: left;">Angle de la pente</td>
-<td style="text-align: left;">$\mathbf{\theta}$</td>
+<td style="text-align: left;"><span class="arithmatex">\(\mathbf{\theta}\)</span></td>
 <td style="text-align: left;">Angle d'inclinaison de la piste par rapport à l'horizontale.</td>
-<td style="text-align: left;">Ex: $15^\circ$.</td>
+<td style="text-align: left;">Ex: <span class="arithmatex">\(15^\circ\)</span>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Paramètre Temporel</strong></td>
 <td style="text-align: left;">Pas de temps</td>
-<td style="text-align: left;">$\mathbf{\Delta t}$</td>
+<td style="text-align: left;"><span class="arithmatex">\(\mathbf{\Delta t}\)</span></td>
 <td style="text-align: left;">Intervalle de temps entre chaque calcul (itération) de la simulation.</td>
-<td style="text-align: left;">Petit intervalle constant (ex: $0.1 \text{ s}$).</td>
+<td style="text-align: left;">Petit intervalle constant (ex: <span class="arithmatex">\(0.1 \text{ s}\)</span>).</td>
 </tr>
 </tbody>
 </table>
 <h3 id="levolution-des-parametres">l'évolution des paramétres :</h3>
-<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps $\delta t$ et a chque iteration le code :
+<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et a chque iteration le code :
 - determine les valeurs actuelles des parametre $ \mu $ et $ C_D \cdot A$
 - Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$
 - Calcule l'acceleration puis la nouvelle vitesse et la position.</p>
-<p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre $\mu$ et $ C_D \cdot A$ évoluent au cours de temps.</p>
+<p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre <span class="arithmatex">\(\mu\)</span> et $ C_D \cdot A$ évoluent au cours de temps.</p>
 <h3 id="scenario-normal-mouvement">scénario normal (mouvement) :</h3>
-<p>je maintient $\mathbf{\mu}$ et $\mathbf{C_D \cdot A}$ à des valeurs moyennes , pour que la force de résistance ($\mathbf{F}<em>{\text{résistance}} = \mathbf{F}</em>{\mathbf{neige}} + \mathbf{F}<em>{\mathbf{air}})$ soit proche de la force de gravité $\mathbf{F}</em>{\mathbf{g}}$.
-Par consequent laa $\mathbf{F}_{\text{somme}}$ reste faible, l'accélération est proche de zéro, et la vitesse se stabilise à un niveau constant et modéré.</p>
+<p>je maintient <span class="arithmatex">\(\mathbf{\mu}\)</span> et <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span> à des valeurs moyennes , pour que la force de résistance (<span class="arithmatex">\(\mathbf{F}_{\text{résistance}} = \mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})\)</span> soit proche de la force de gravité <span class="arithmatex">\(\mathbf{F}_{\mathbf{g}}\)</span>.
+Par consequent laa <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span> reste faible, l'accélération est proche de zéro, et la vitesse se stabilise à un niveau constant et modéré.</p>
 <h3 id="scenario-anormal-mouvement">scénario anormal (mouvement) :</h3>
-<p>À un instant prédéfini $\mathbf{t}<em>{\text{danger}}$ , Je code une chute brutale et soudaine de $\mathbf{\mu}$ et une augmentation de $\mathbf{C_D \cdot A}$. Donc La $\mathbf{F}</em>{\text{somme}}$ devient fortement positive, provoquant un pic d'accélération et une augmentation rapide et non maîtrisée de la vitesse.</p>
+<p>À un instant prédéfini <span class="arithmatex">\(\mathbf{t}_{\text{danger}}\)</span> , Je code une chute brutale et soudaine de <span class="arithmatex">\(\mathbf{\mu}\)</span> et une augmentation de <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span>. Donc La <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span> devient fortement positive, provoquant un pic d'accélération et une augmentation rapide et non maîtrisée de la vitesse.</p>
 <p>d'une autre part pour les variables en relation avec le corps , j'ai choisie de modeliser 4 variables (FC,FR,temperature,VO2). l'idée principal c'etait de lier cela avec l'ffort physoiqe et au stress. </p>
 <p>a chaque seconde le skieur travaille pour contrer les forces et changer de direction : 
-$$\mathbf{P}<em>{\text{effort}} = (\mathbf{F}</em>{\mathbf{n}} + \mathbf{F}_{\mathbf{a}}) \cdot \mathbf{v}$$</p>
+<span class="arithmatex">\(<span class="arithmatex">\(\mathbf{P}_{\text{effort}} = (\mathbf{F}_{\mathbf{n}} + \mathbf{F}_{\mathbf{a}}) \cdot \mathbf{v}\)</span>\)</span></p>
 <p>La consomation d'oxygene est proportionnel a cette puisance ? </p>
-<p>$$\mathbf{\dot{V}O_2} = \text{Constante}<em>{\text{effort}} \times \mathbf{P}</em>{\text{effort}} + \mathbf{\dot{V}O_2}_{\text{repos}}$$</p>
+<div class="arithmatex">\[\mathbf{\dot{V}O_2} = \text{Constante}_{\text{effort}} \times \mathbf{P}_{\text{effort}} + \mathbf{\dot{V}O_2}_{\text{repos}}\]</div>
 <p>Selon chatgpt O_O : </p>
-<p>$$\text{Constante}_{\text{effort}} = \mathbf{0,012 \text{ L d'O}_2 / (\text{min} \cdot \text{Watt})}$$</p>
+<div class="arithmatex">\[\text{Constante}_{\text{effort}} = \mathbf{0,012 \text{ L d'O}_2 / (\text{min} \cdot \text{Watt})}\]</div>
 <p>pour la temperature la cas simple c'était de la considérer comme constante.</p>
 <p><strong>je n'avais pas le temps de comprendre comment evoluent FC et FR , donc j'ai ignoré les deux.</strong></p>
 <hr />
@@ -339,6 +339,8 @@ $$\mathbf{P}<em>{\text{effort}} = (\mathbf{F}</em>{\mathbf{n}} + \mathbf{F}_{\ma
     <script src="../../js/theme.js"></script>
       <script src="../../js/timeago.min.js"></script>
       <script src="../../js/timeago_mkdocs_material.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
