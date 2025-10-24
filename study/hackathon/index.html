@@ -145,7 +145,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="modelisation-et-detection-automatique">Modélisation et détection automatique</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 19:54:50 UTC"><span class="timeago" datetime="2025-10-24T19:54:50+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 19:54:50 UTC">2025-10-24</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 20:01:10 UTC"><span class="timeago" datetime="2025-10-24T20:01:10+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 20:01:10 UTC">2025-10-24</span></em></p>
 <h2 id="la-problematique">La Problématique</h2>
 <p>Je n'expliquerai pas pourquoi, mais durant ce hackathon, j'avais deux besoins :</p>
 <ul>
@@ -257,10 +257,12 @@
 </tbody>
 </table>
 <h3 id="levolution-des-parametres">l'évolution des paramétres :</h3>
-<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et a chque iteration le code :
-- determine les valeurs actuelles des parametre $ \mu $ et $ C_D \cdot A$
-- Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$
-- Calcule l'acceleration puis la nouvelle vitesse et la position.</p>
+<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et a chque iteration le code :</p>
+<ul>
+<li>determine les valeurs actuelles des parametre <span class="arithmatex">\(<span class="arithmatex">\(\mu\)</span>\)</span> et <span class="arithmatex">\(<span class="arithmatex">\(C_D \cdot A\)</span>\)</span></li>
+<li>Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$</li>
+<li>Calcule l'acceleration puis la nouvelle vitesse et la position.</li>
+</ul>
 <p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre <span class="arithmatex">\(\mu\)</span> et $ C_D \cdot A$ évoluent au cours de temps.</p>
 <h3 id="scenario-normal-mouvement">scénario normal (mouvement) :</h3>
 <p>je maintient <span class="arithmatex">\(\mathbf{\mu}\)</span> et <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span> à des valeurs moyennes , pour que la force de résistance (<span class="arithmatex">\(\mathbf{F}_{\text{résistance}} = \mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})\)</span> soit proche de la force de gravité <span class="arithmatex">\(\mathbf{F}_{\mathbf{g}}\)</span>.
