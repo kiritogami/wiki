@@ -145,7 +145,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="modelisation-et-detection-automatique">Modélisation et détection automatique</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 20:01:10 UTC"><span class="timeago" datetime="2025-10-24T20:01:10+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 20:01:10 UTC">2025-10-24</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 20:57:01 UTC"><span class="timeago" datetime="2025-10-24T20:57:01+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 20:57:01 UTC">2025-10-24</span></em></p>
 <h2 id="la-problematique">La Problématique</h2>
 <p>Je n'expliquerai pas pourquoi, mais durant ce hackathon, j'avais deux besoins :</p>
 <ul>
@@ -188,7 +188,7 @@
 <div class="arithmatex">\[F_n = \mu \cdot N\]</div>
 <div class="arithmatex">\[F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2\]</div>
 <p><span class="arithmatex">\(\mu\)</span> represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.</p>
-<p>$ C_D \cdot A$ mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(C_D \cdot A\)</span>\)</span> mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale</p>
 <p>Sans détailler les calculs, pour un instant <span class="arithmatex">\(t_{i+1}\)</span> :</p>
 <div class="arithmatex">\[a_{i+1} = \frac{\mathbf{F}_{\text{sommes}}}{m} = \frac{\mathbf{F}_{\mathbf{g}} - (\mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})}{m}\]</div>
 <div class="arithmatex">\[\mathbf{v}_{i+1} = \mathbf{v}_i + \mathbf{a}_{i+1} \cdot \mathbf{\Delta t}\]</div>
@@ -257,13 +257,13 @@
 </tbody>
 </table>
 <h3 id="levolution-des-parametres">l'évolution des paramétres :</h3>
-<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et a chque iteration le code :</p>
+<p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et à chaque iteration le code :</p>
 <ul>
 <li>determine les valeurs actuelles des parametre <span class="arithmatex">\(<span class="arithmatex">\(\mu\)</span>\)</span> et <span class="arithmatex">\(<span class="arithmatex">\(C_D \cdot A\)</span>\)</span></li>
-<li>Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$</li>
+<li>Utilise la vitesse actuelle pour calculer $$ \mathbf{F}_{\text{sommes}}$$</li>
 <li>Calcule l'acceleration puis la nouvelle vitesse et la position.</li>
 </ul>
-<p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre <span class="arithmatex">\(\mu\)</span> et $ C_D \cdot A$ évoluent au cours de temps.</p>
+<p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre <span class="arithmatex">\(<span class="arithmatex">\(\mu\)</span>\)</span> et $$ C_D \cdot A$$ évoluent au cours de temps.</p>
 <h3 id="scenario-normal-mouvement">scénario normal (mouvement) :</h3>
 <p>je maintient <span class="arithmatex">\(\mathbf{\mu}\)</span> et <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span> à des valeurs moyennes , pour que la force de résistance (<span class="arithmatex">\(\mathbf{F}_{\text{résistance}} = \mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})\)</span> soit proche de la force de gravité <span class="arithmatex">\(\mathbf{F}_{\mathbf{g}}\)</span>.
 Par consequent laa <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span> reste faible, l'accélération est proche de zéro, et la vitesse se stabilise à un niveau constant et modéré.</p>
