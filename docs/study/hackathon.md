@@ -72,7 +72,8 @@ Les valeurs initiales que je dois fournir sont :
 ### l'évolution des paramétres : 
 
 le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps $\delta t$ et a chque iteration le code :
-- determine les valeurs actuelles des parametre $ \mu $ et $ C_D \cdot A$
+
+- determine les valeurs actuelles des parametre $$\mu$$ et $$C_D \cdot A$$
 - Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$
 - Calcule l'acceleration puis la nouvelle vitesse et la position.
 
