@@ -46,7 +46,7 @@ $$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2$$
 
 $\mu$ represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.
 
-$ C_D \cdot A$ mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale
+$$C_D \cdot A$$ mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale
 
 
 Sans détailler les calculs, pour un instant $t_{i+1}$ :
@@ -71,13 +71,13 @@ Les valeurs initiales que je dois fournir sont :
 
 ### l'évolution des paramétres : 
 
-le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps $\delta t$ et a chque iteration le code :
+le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps $\delta t$ et à chaque iteration le code :
 
 - determine les valeurs actuelles des parametre $$\mu$$ et $$C_D \cdot A$$
-- Utilise la vitesse actuelle pour calculer $ \mathbf{F}_{\text{sommes}}$
+- Utilise la vitesse actuelle pour calculer $$ \mathbf{F}_{\text{sommes}}$$
 - Calcule l'acceleration puis la nouvelle vitesse et la position.
 
-La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre $\mu$ et $ C_D \cdot A$ évoluent au cours de temps.
+La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre $$\mu$$ et $$ C_D \cdot A$$ évoluent au cours de temps.
 
 ### scénario normal (mouvement) : 
 
