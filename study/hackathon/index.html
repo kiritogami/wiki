@@ -145,7 +145,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="modelisation-et-detection-automatique">Modélisation et détection automatique</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 19:08:54 UTC"><span class="timeago" datetime="2025-10-24T19:08:54+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 19:08:54 UTC">2025-10-24</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 19:49:48 UTC"><span class="timeago" datetime="2025-10-24T19:49:48+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 19:49:48 UTC">2025-10-24</span></em></p>
 <h2 id="la-problematique">La Problématique</h2>
 <p>Je n'expliquerai pas pourquoi, mais durant ce hackathon, j'avais deux besoins :</p>
 <ul>
@@ -175,15 +175,17 @@
 </table>
 <p>Bien sûr, j'avais d'autres informations , mais par manque de temps, j'ai décidé de ne considérer que ces données-là (desolé équipe fonctionnelle :) ).</p>
 <p><strong>Maintenant, la question cruciale : comment vais-je déterminer la manière dont toutes ces variables évoluent, sachant que je devais créer deux scénarios, un pour un skieur en sécurité et un autre où le skieur serait en danger ?</strong></p>
-<p>Les idées que j'ai eues à ce moment :
-- Un jeu vidéo de ski. 
-- Les compétitions de ski.
-- Utiliser la loi de Newton (merci ChatGPT).</p>
+<p>Les idées que j'ai eues à ce moment :</p>
+<ul>
+<li>Un jeu vidéo de ski. </li>
+<li>Les compétitions de ski.</li>
+<li>Utiliser la loi de Newton (merci ChatGPT).</li>
+</ul>
 <p>Pour les gens qui detestent le mecanique, je vous conseille ignorer cette partie et rediriger vous directement vers la partie de scénario normal / anormal. </p>
 <h3 id="loi-de-newton">Loi de Newton :</h3>
 <p>La seconde loi de Newton est simple ; la somme des forces appliquées est égale au produit de la masse et de l'accélération. Dans notre cas, trois forces s'appliquent : la force de gravité, la résistance de la neige et la résistance de l'air.</p>
-<div class="arithmatex">\[ F_g = m \cdot g \cdot \sin(\theta)$$
-$$ F_n = \mu \cdot N$$
+<div class="arithmatex">\[F_g = m \cdot g \cdot \sin(\theta)$$
+$$F_n = \mu \cdot N$$
 $$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2\]</div>
 <p><span class="arithmatex">\(\mu\)</span> represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.</p>
 <p>$ C_D \cdot A$ mesure la surface que le corp oppose au vent., une valeur faible ca veut dire que la resistance de l'air est minimale</p>
