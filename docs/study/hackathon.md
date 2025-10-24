@@ -26,8 +26,7 @@ Bien sûr, j'avais d'autres informations , mais par manque de temps, j'ai décid
 
 **Maintenant, la question cruciale : comment vais-je déterminer la manière dont toutes ces variables évoluent, sachant que je devais créer deux scénarios, un pour un skieur en sécurité et un autre où le skieur serait en danger ?**
 
-Les idées que j'ai eues à ce moment :
-
+Les idées que j'ai eu à ce moment :
 
 - Un jeu vidéo de ski. 
 - Les compétitions de ski.
@@ -40,7 +39,9 @@ Pour les gens qui detestent le mecanique, je vous conseille ignorer cette partie
 La seconde loi de Newton est simple ; la somme des forces appliquées est égale au produit de la masse et de l'accélération. Dans notre cas, trois forces s'appliquent : la force de gravité, la résistance de la neige et la résistance de l'air.
 
 $$F_g = m \cdot g \cdot \sin(\theta)$$
+
 $$F_n = \mu \cdot N$$
+
 $$F_a = \frac{1}{2} \cdot \rho \cdot C_D \cdot A \cdot v^2$$
 
 $\mu$ represente le niveau de frottment entre les skis et la neige, une valeur eleve ca veut dire que le frotemmetn est fort c-a-d qu'on est dans une situation sûr.
