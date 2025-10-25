@@ -69,7 +69,7 @@ Les valeurs initiales que je dois fournir sont :
 | **Paramètre Piste** | Angle de la pente | $\mathbf{\theta}$ | Angle d'inclinaison de la piste par rapport à l'horizontale. | Ex: $15^\circ$. |
 | **Paramètre Temporel**| Pas de temps | $\mathbf{\Delta t}$ | Intervalle de temps entre chaque calcul (itération) de la simulation. | Petit intervalle constant (ex: $0.1 \text{ s}$). |
 
-### l'évolution des paramétres : 
+### l'évolution des paramétres 
 
 le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps $\delta t$ et à chaque iteration le code :
 
@@ -79,12 +79,12 @@ le fonctionnement du modele est simple c'est une boucle qui se repetent à chaqu
 
 La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre $$\mu$$ et $$ C_D \cdot A$$ évoluent au cours de temps.
 
-### scénario normal (mouvement) : 
+### scénario normal (mouvement) 
 
 je maintient $\mathbf{\mu}$ et $\mathbf{C_D \cdot A}$ à des valeurs moyennes , pour que la force de résistance ($\mathbf{F}_{\text{résistance}} = \mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})$ soit proche de la force de gravité $\mathbf{F}_{\mathbf{g}}$.
 Par consequent laa $\mathbf{F}_{\text{somme}}$ reste faible, l'accélération est proche de zéro, et la vitesse se stabilise à un niveau constant et modéré.
 
-### scénario anormal (mouvement) : 
+### scénario anormal (mouvement)  
 
 À un instant prédéfini $\mathbf{t}_{\text{danger}}$ , Je code une chute brutale et soudaine de $\mathbf{\mu}$ et une augmentation de $\mathbf{C_D \cdot A}$. Donc La $\mathbf{F}_{\text{somme}}$ devient fortement positive, provoquant un pic d'accélération et une augmentation rapide et non maîtrisée de la vitesse.
 
@@ -108,13 +108,13 @@ pour la temperature la cas simple c'était de la considérer comme constante.
 
 ---
 
-## 2.Détection automatique : 
+## 2.Détection automatique 
 
 Puisque j'ai passé beaucoup de temps à comprendre comment je pouvais faire une simulation plus ou moins réaliste, je pense que vous l'avez remarqué, je n'avais pas beaucoup de temps pour travailler sur la partie de la détection.
 
 En premier, ce que j'avais en tête, c'était d'ajouter un modèle de classification basé sur l'apprentissage automatique (je réfléchissais à des SVM puisque j'ai déjà travaillé avec ça). Le problème, c'est que je n'ai pas trouvé de données convenables pour mon cas.
 
-Après réflexion et recherche, ce que j'ai décidé, c'est de plutôt créer un modèle qui répond à la question : « Est-ce que ce mouvement est normal ou non ? » Pourquoi ? Parce que j'ai déjà trouvé cette base de données : [kaggle data](https://www.kaggle.com/datasets/usmanabbasi2002/kfall-dataset=). Ainsi, je saurais au moins si le mouvement est anormal.
+Après réflexion et recherche, ce que j'ai décidé, c'est de plutôt créer un modèle qui répond à la question : « Est-ce que ce mouvement est normal ou non ? » Pourquoi ? Parce que j'ai déjà trouvé cette base de données : [kaggle data](https://www.kaggle.com/datasets/usmanabbasi2002/kfall-dataset). Ainsi, je saurais au moins si le mouvement est anormal.
 
 Pour les gens qui pensent qu'avec ça, j'aurais beaucoup de faux positifs, je suis d'accord avec vous. C'est pour ça que ce que je fais, c'est une vérification qui passe par 3 étapes :
 
@@ -127,12 +127,12 @@ Pour les gens qui pensent qu'avec ça, j'aurais beaucoup de faux positifs, je su
 Même avec ça, je dirais que j'aurais des faux positifs, mais enfin, notre objectif, c'est aussi de privilégier les faux positifs (un skieur qui est déclaré en danger mais en réalité il ne l'est pas, est moins impactant qu'un skieur qui est déclaré non en danger mais en réalité il est en danger).
 
 
-## 3.Amélioration : 
+## 3.Amélioration 
 
 Pour moi, au niveau de la simulation de mouvement, c'était plus ou moins réaliste. Par contre, il reste à ajouter les autres variables corporelles (FC et FR). Il reste aussi à mentionner que le capteur était simulé dans le back-end, ce qui est faux, car un capteur doit communiquer avec le back-end, c'est là qu'intervient le protocole avec lequel on va communiquer entre le back-end et le capteur (j'aimerais bien travailler sur ça dans le futur, c'est intéressant !). Pour le côté de la détection, il faut plus de travail sur la liaison des paramètres corporels et de mouvement. Il faut aussi voir comment prouver que ce que l'on fait génère des faux positifs mais pas de faux négatifs (en supposant qu'il le fait :) ).
 
 
-## 4.conclusion : 
+## 4.conclusion 
 
 Pendant ces deux jours, j'ai pris de fausses décisions, certes. Pour certains, peut-être qu'ils penseront que pousser la simulation à ce degré là est inutile puisque c'est juste un hackathon, mais personnellement je voulais travailler sur ça (peut-être parce que ça fait longtemps que je n'ai pas fait de mécanique :)) mais l'idée, c'était de faire quelque chose de réaliste et d'ailleurs, c'est mon coéquipier qui m'a permis de faire cela, puisque lui s'occupait de toute la partie front-end. Donc,j'avais le temps pour travailler sur le backend et on voulait faire quelque chose de plus sophistiqué et plus réaliste (merci A.A.).
 

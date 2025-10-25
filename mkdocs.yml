@@ -2,7 +2,8 @@ site_name: Wiki
 nav:
   - Home: index.md
   - Git: git.md
-  - Cisco Conf:
+  - Cisco Configuration:
+    - Configuration basique d'un équipement Cisco : cisco/confBasique.md
     - VLAN et routage inter VLAN: cisco/interVlan.md
     - LACP: cisco/lacp.md
     
