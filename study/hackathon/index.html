@@ -48,8 +48,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../git/">Git</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Cisco Conf</span></p>
+              <p class="caption"><span class="caption-text">Cisco Configuration</span></p>
               <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cisco/confBasique/">Configuration basique d'un équipement Cisco</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../cisco/interVlan/">VLAN et routage inter VLAN</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../cisco/lacp/">LACP</a>
@@ -99,19 +101,19 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#loi-de-newton">Loi de Newton :</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#levolution-des-parametres">l'évolution des paramétres :</a>
+    <li class="toctree-l3"><a class="reference internal" href="#levolution-des-parametres">l'évolution des paramétres</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#scenario-normal-mouvement">scénario normal (mouvement) :</a>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-normal-mouvement">scénario normal (mouvement)</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#scenario-anormal-mouvement">scénario anormal (mouvement) :</a>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-anormal-mouvement">scénario anormal (mouvement)</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2detection-automatique">2.Détection automatique :</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2detection-automatique">2.Détection automatique</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3amelioration">3.Amélioration :</a>
+    <li class="toctree-l2"><a class="reference internal" href="#3amelioration">3.Amélioration</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4conclusion">4.conclusion :</a>
+    <li class="toctree-l2"><a class="reference internal" href="#4conclusion">4.conclusion</a>
     </li>
     </ul>
                   </li>
@@ -145,7 +147,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="modelisation-et-detection-automatique">Modélisation et détection automatique</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="24 octobre 2025 20:57:01 UTC"><span class="timeago" datetime="2025-10-24T20:57:01+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="24 octobre 2025 20:57:01 UTC">2025-10-24</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="25 octobre 2025 18:09:19 UTC"><span class="timeago" datetime="2025-10-25T18:09:19+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="25 octobre 2025 18:09:19 UTC">2025-10-25</span></em></p>
 <h2 id="la-problematique">La Problématique</h2>
 <p>Je n'expliquerai pas pourquoi, mais durant ce hackathon, j'avais deux besoins :</p>
 <ul>
@@ -256,7 +258,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="levolution-des-parametres">l'évolution des paramétres :</h3>
+<h3 id="levolution-des-parametres">l'évolution des paramétres</h3>
 <p>le fonctionnement du modele est simple c'est une boucle qui se repetent à chaque intervalle de temps <span class="arithmatex">\(\delta t\)</span> et à chaque iteration le code :</p>
 <ul>
 <li>determine les valeurs actuelles des parametre <span class="arithmatex">\(<span class="arithmatex">\(\mu\)</span>\)</span> et <span class="arithmatex">\(<span class="arithmatex">\(C_D \cdot A\)</span>\)</span></li>
@@ -264,10 +266,10 @@
 <li>Calcule l'acceleration puis la nouvelle vitesse et la position.</li>
 </ul>
 <p>La difference entre le sceneario normal et anormal reside dans la maniere comment les parametre <span class="arithmatex">\(<span class="arithmatex">\(\mu\)</span>\)</span> et $$ C_D \cdot A$$ évoluent au cours de temps.</p>
-<h3 id="scenario-normal-mouvement">scénario normal (mouvement) :</h3>
+<h3 id="scenario-normal-mouvement">scénario normal (mouvement)</h3>
 <p>je maintient <span class="arithmatex">\(\mathbf{\mu}\)</span> et <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span> à des valeurs moyennes , pour que la force de résistance (<span class="arithmatex">\(\mathbf{F}_{\text{résistance}} = \mathbf{F}_{\mathbf{neige}} + \mathbf{F}_{\mathbf{air}})\)</span> soit proche de la force de gravité <span class="arithmatex">\(\mathbf{F}_{\mathbf{g}}\)</span>.
 Par consequent laa <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span> reste faible, l'accélération est proche de zéro, et la vitesse se stabilise à un niveau constant et modéré.</p>
-<h3 id="scenario-anormal-mouvement">scénario anormal (mouvement) :</h3>
+<h3 id="scenario-anormal-mouvement">scénario anormal (mouvement)</h3>
 <p>À un instant prédéfini <span class="arithmatex">\(\mathbf{t}_{\text{danger}}\)</span> , Je code une chute brutale et soudaine de <span class="arithmatex">\(\mathbf{\mu}\)</span> et une augmentation de <span class="arithmatex">\(\mathbf{C_D \cdot A}\)</span>. Donc La <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span> devient fortement positive, provoquant un pic d'accélération et une augmentation rapide et non maîtrisée de la vitesse.</p>
 <p>d'une autre part pour les variables en relation avec le corps , j'ai choisie de modeliser 4 variables (FC,FR,temperature,VO2). l'idée principal c'etait de lier cela avec l'ffort physoiqe et au stress. </p>
 <p>a chaque seconde le skieur travaille pour contrer les forces et changer de direction : 
@@ -279,10 +281,10 @@ Par consequent laa <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span>
 <p>pour la temperature la cas simple c'était de la considérer comme constante.</p>
 <p><strong>je n'avais pas le temps de comprendre comment evoluent FC et FR , donc j'ai ignoré les deux.</strong></p>
 <hr />
-<h2 id="2detection-automatique">2.Détection automatique :</h2>
+<h2 id="2detection-automatique">2.Détection automatique</h2>
 <p>Puisque j'ai passé beaucoup de temps à comprendre comment je pouvais faire une simulation plus ou moins réaliste, je pense que vous l'avez remarqué, je n'avais pas beaucoup de temps pour travailler sur la partie de la détection.</p>
 <p>En premier, ce que j'avais en tête, c'était d'ajouter un modèle de classification basé sur l'apprentissage automatique (je réfléchissais à des SVM puisque j'ai déjà travaillé avec ça). Le problème, c'est que je n'ai pas trouvé de données convenables pour mon cas.</p>
-<p>Après réflexion et recherche, ce que j'ai décidé, c'est de plutôt créer un modèle qui répond à la question : « Est-ce que ce mouvement est normal ou non ? » Pourquoi ? Parce que j'ai déjà trouvé cette base de données : <a href="https://www.kaggle.com/datasets/usmanabbasi2002/kfall-dataset=">kaggle data</a>. Ainsi, je saurais au moins si le mouvement est anormal.</p>
+<p>Après réflexion et recherche, ce que j'ai décidé, c'est de plutôt créer un modèle qui répond à la question : « Est-ce que ce mouvement est normal ou non ? » Pourquoi ? Parce que j'ai déjà trouvé cette base de données : <a href="https://www.kaggle.com/datasets/usmanabbasi2002/kfall-dataset">kaggle data</a>. Ainsi, je saurais au moins si le mouvement est anormal.</p>
 <p>Pour les gens qui pensent qu'avec ça, j'aurais beaucoup de faux positifs, je suis d'accord avec vous. C'est pour ça que ce que je fais, c'est une vérification qui passe par 3 étapes :</p>
 <ul>
 <li>
@@ -296,9 +298,9 @@ Par consequent laa <span class="arithmatex">\(\mathbf{F}_{\text{somme}}\)</span>
 </li>
 </ul>
 <p>Même avec ça, je dirais que j'aurais des faux positifs, mais enfin, notre objectif, c'est aussi de privilégier les faux positifs (un skieur qui est déclaré en danger mais en réalité il ne l'est pas, est moins impactant qu'un skieur qui est déclaré non en danger mais en réalité il est en danger).</p>
-<h2 id="3amelioration">3.Amélioration :</h2>
+<h2 id="3amelioration">3.Amélioration</h2>
 <p>Pour moi, au niveau de la simulation de mouvement, c'était plus ou moins réaliste. Par contre, il reste à ajouter les autres variables corporelles (FC et FR). Il reste aussi à mentionner que le capteur était simulé dans le back-end, ce qui est faux, car un capteur doit communiquer avec le back-end, c'est là qu'intervient le protocole avec lequel on va communiquer entre le back-end et le capteur (j'aimerais bien travailler sur ça dans le futur, c'est intéressant !). Pour le côté de la détection, il faut plus de travail sur la liaison des paramètres corporels et de mouvement. Il faut aussi voir comment prouver que ce que l'on fait génère des faux positifs mais pas de faux négatifs (en supposant qu'il le fait :) ).</p>
-<h2 id="4conclusion">4.conclusion :</h2>
+<h2 id="4conclusion">4.conclusion</h2>
 <p>Pendant ces deux jours, j'ai pris de fausses décisions, certes. Pour certains, peut-être qu'ils penseront que pousser la simulation à ce degré là est inutile puisque c'est juste un hackathon, mais personnellement je voulais travailler sur ça (peut-être parce que ça fait longtemps que je n'ai pas fait de mécanique :)) mais l'idée, c'était de faire quelque chose de réaliste et d'ailleurs, c'est mon coéquipier qui m'a permis de faire cela, puisque lui s'occupait de toute la partie front-end. Donc,j'avais le temps pour travailler sur le backend et on voulait faire quelque chose de plus sophistiqué et plus réaliste (merci A.A.).</p>
 <p>En dernier point, j'ai passé de bons moments et c'était une bonne expérience en général. Donc, ce que je peux dire en dernier point : <strong>Merci StaySafe.</strong></p>
 <p><strong>A faire : Je n'ai pas ajouté du code peut être que je vais le publier après, mais l'important c'est de voir comment le capteur peut communique avec le backend (hors ligne).</strong></p>
