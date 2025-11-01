@@ -30,19 +30,42 @@
 
 ---
 
-## Questions
+## Informations sur l'état du dépôt 
 
-### Questions Générales
+* Pour lister les branches distantes (pour les branches locales on eneleve le -r) : `git branch -r`
 
-* Si j'ai poussé un code dans une branche est-ce que je peux annulé cette action ?
-* supposons que j'ai commité un fichier 1 et après je l'ai pas pousser mais j'ai commité un autre fichier 2 est-ce que lorsque je vais pousser ça va être le fichier 1 ou le premier ?
+![sortie de la commande ](./img/sortieBranchRemote.png)
 
-### Réponses
+`origin\HEAD -> origin\main ` : indique la branche principale (default).
 
-* **Quand on pousse :** ce sont tous les fichiers qui n'ont pas été pousser qui le vont être ; donc c'est le premier et le deuxième.
-    * Avec la commande : `git log alias/branche_name` on peut voir les commits qui n'ont pas été encore poussés.
+`orign\main` : indique une branch distante normale(les autres aussi).
 
-### Afficher les Branches
+* Pour lister les branches locales et indiquer à queel branches distantes sont liées : `git branch -vv`
 
-* Comment on peut voir les branches qui existent déjà ?
-    * Avec la commande : `git branch`
+![sortie de la commande ](./img/sortieBranchVerbose.png)
+
+`* main` : c'est le nom de la branch locale actuelle.
+
+`92965a3` : le hash dcu dernier commit.
+
+`[origin\master]`:la branche distante liée à main.
+
+
+
+## Changer la branche distante de suivi
+
+*c'est à dire le main qui est liée à origin/master comment ja le lie à origin/main ?
+```
+git push -u origin main #il faut qu'on soit sur la branche locale main 
+```
+
+**La commande aussi push ce qui est dans la branch locale vers la branche distante**
+
+## suprrimer une branche distante
+
+* cette commande supprime la branche origin\master : 
+
+```
+git push origin --delete master 
+```
+
