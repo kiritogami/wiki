@@ -59,15 +59,11 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#questions">Questions</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#questions-generales">Questions Générales</a>
+    <li class="toctree-l2"><a class="reference internal" href="#informations-sur-letat-du-depot">Informations sur l'état du dépôt</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#reponses">Réponses</a>
+    <li class="toctree-l2"><a class="reference internal" href="#changer-la-branche-distante-de-suivi">Changer la branche distante de suivi</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#afficher-les-branches">Afficher les Branches</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#suprrimer-une-branche-distante">suprrimer une branche distante</a>
     </li>
     </ul>
                 </li>
@@ -148,7 +144,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="travailler-avec-git">Travailler avec Git</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="16 octobre 2025 12:27:02 UTC"><span class="timeago" datetime="2025-10-16T12:27:02+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="16 octobre 2025 12:27:02 UTC">2025-10-16</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="1 novembre 2025 08:33:10 UTC"><span class="timeago" datetime="2025-11-01T08:33:10+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="1 novembre 2025 08:33:10 UTC">2025-11-01</span></em></p>
 <h2 id="comment-deposer-un-projet-sur-githubgitlab">Comment déposer un projet sur GitHub/GitLab</h2>
 <h3 id="etape-1-initialisation">Étape 1 : Initialisation</h3>
 <ul>
@@ -178,26 +174,31 @@
 <li>Maintenant on doit envoyer nos commits qui sont local avec la commande : <code>git push -u &lt;name of distant depot&gt; &lt;branche envoyée&gt;</code></li>
 </ul>
 <hr />
-<h2 id="questions">Questions</h2>
-<h3 id="questions-generales">Questions Générales</h3>
+<h2 id="informations-sur-letat-du-depot">Informations sur l'état du dépôt</h2>
 <ul>
-<li>Si j'ai poussé un code dans une branche est-ce que je peux annulé cette action ?</li>
-<li>supposons que j'ai commité un fichier 1 et après je l'ai pas pousser mais j'ai commité un autre fichier 2 est-ce que lorsque je vais pousser ça va être le fichier 1 ou le premier ?</li>
+<li>Pour lister les branches distantes (pour les branches locales on eneleve le -r) : <code>git branch -r</code></li>
 </ul>
-<h3 id="reponses">Réponses</h3>
+<p><img alt="sortie de la commande " src="../img/sortieBranchRemote.png" /></p>
+<p><code>origin\HEAD -&gt; origin\main</code> : indique la branche principale (default).</p>
+<p><code>orign\main</code> : indique une branch distante normale(les autres aussi).</p>
 <ul>
-<li><strong>Quand on pousse :</strong> ce sont tous les fichiers qui n'ont pas été pousser qui le vont être ; donc c'est le premier et le deuxième.<ul>
-<li>Avec la commande : <code>git log alias/branche_name</code> on peut voir les commits qui n'ont pas été encore poussés.</li>
+<li>Pour lister les branches locales et indiquer à queel branches distantes sont liées : <code>git branch -vv</code></li>
 </ul>
-</li>
-</ul>
-<h3 id="afficher-les-branches">Afficher les Branches</h3>
+<p><img alt="sortie de la commande " src="../img/sortieBranchVerbose.png" /></p>
+<p><code>* main</code> : c'est le nom de la branch locale actuelle.</p>
+<p><code>92965a3</code> : le hash dcu dernier commit.</p>
+<p><code>[origin\master]</code>:la branche distante liée à main.</p>
+<h2 id="changer-la-branche-distante-de-suivi">Changer la branche distante de suivi</h2>
+<p>*c'est à dire le main qui est liée à origin/master comment ja le lie à origin/main ?
+<div class="highlight"><pre><span></span><code>git push -u origin main #il faut qu&#39;on soit sur la branche locale main 
+</code></pre></div></p>
+<p><strong>La commande aussi push ce qui est dans la branch locale vers la branche distante</strong></p>
+<h2 id="suprrimer-une-branche-distante">suprrimer une branche distante</h2>
 <ul>
-<li>Comment on peut voir les branches qui existent déjà ?<ul>
-<li>Avec la commande : <code>git branch</code></li>
+<li>cette commande supprime la branche origin\master : </li>
 </ul>
-</li>
-</ul>
+<div class="highlight"><pre><span></span><code>git push origin --delete master 
+</code></pre></div>
               
             </div>
           </div><footer>
