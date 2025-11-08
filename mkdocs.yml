@@ -12,7 +12,7 @@ nav:
     - SSH: network/ssh.md
     - DNS: network/dns.md
     - Routage:
-      - RIP: network/routage/rip.md
+      - Exploiatation du RIPv1: network/routage/rip.md
       - OSPF: network/routage/ospf.md
       - BGP: network/routage/bgp.md
     - Snmp: network/Snmp.md
