@@ -6,20 +6,22 @@
 
 Imaginons la situation ci-dessous : 
 
-au debut chaque routeurs construit sa table de routage par defaut; sur chaque table on trouvera 2 entrée,à les deux réseaux connecte directement à notre routeurs.
+Au début chaque routeurs construit sa table de routage par défaut; sur chaque table on trouvera 2 entrées,à savoir les deux réseaux connectés directement à notre routeur.
 
-**image (en cours)**
+![réseau avec RIPv1 ](./img/RIPv1_Lab_table_routage.png)
 
-Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les metriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)
+Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les métriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)
 
-**image (en cours)**
 
 
 ## Diference entre v1 et v2
 
-* le RIPv1 est ClassFull , le RIPv2 utilise CIDR
+* Le RIPv1 est ClassFull , le RIPv2 utilise CIDR
+
 * L'authentification est ajoutée dans le RIPv2
-* l'adresse de broadcast est differente dans la version 2
+
+* L'adresse de broadcast est differente dans la version 2
+
 
 ## Configuration sur un routeur Cisco
 
@@ -36,7 +38,7 @@ router(config)# network 192.168.2.0
 
 ## Routing Loop
 
-Supposons qu'une interface est down (ex : F0/0 de R3) alors le reseau 192.168.4.0/24 n'est plus joignable. 
+Supposons qu'une interface est down (ex : F0/0 de R3) alors le réseau 192.168.4.0/24 n'est plus joignable. 
 
 **par defaut chaque routeur envoie periodiquement(30s fixe en version 1) sa table**
 
@@ -81,3 +83,12 @@ L'idée ici c'est d'imaginer un réseaux qui utilise le RIPv1 comme protocole de
 * add family : indique le type d'addresse (dans notre cas `2` pour IP)
 
 ## Shéma du réseau 
+
+L'idée de l'exploitaion est évidente, c'est le même shéma en-dessus, il faut juste ajouter une machine unix dans le réseau `192.168.1.0\24` , pour faire ca `gns3` offre 2 possibilite : 
+
+* Lier une VM qui est deja presente sur VirtualBox : dans la configuration de préference je sais pas pourquoi il ne détecte pas `VBoxManage.exe`
+* Utiliser un conteneur Docker : j'ai un problème de connexion que j'ai pas pu résoudre (j'ai testé un adapteur bridge avec conf de eth1 sur dhcp => ça marche pas !!).
+
+Donc pour le moment je peux pas tester ça tant que j'ai pas résolue ce problème de machine unix. 
+
+**I HATE YOU GNS3** 
