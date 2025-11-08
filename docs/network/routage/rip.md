@@ -8,7 +8,7 @@ Imaginons la situation ci-dessous :
 
 Au début chaque routeurs construit sa table de routage par défaut; sur chaque table on trouvera 2 entrées,à savoir les deux réseaux connectés directement à notre routeur.
 
-![réseau avec RIPv1 ](./img/RIPv1_Lab_table_routage.png)
+![réseau avec RIPv1 ](../../img/RIPv1_Lab_table_routage.png)
 
 Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les métriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)
 
