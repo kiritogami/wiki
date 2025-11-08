@@ -144,18 +144,23 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="rip-routing-information-protocol">RIP (Routing Information Protocol)</h1>
-<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="8 novembre 2025 15:28:36 UTC"><span class="timeago" datetime="2025-11-08T15:28:36+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="8 novembre 2025 15:28:36 UTC">2025-11-08</span></em></p>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="8 novembre 2025 23:32:34 UTC"><span class="timeago" datetime="2025-11-08T23:32:34+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="8 novembre 2025 23:32:34 UTC">2025-11-08</span></em></p>
 <h2 id="fonctionnement">Fonctionnement</h2>
 <p>Imaginons la situation ci-dessous : </p>
-<p>au debut chaque routeurs construit sa table de routage par defaut; sur chaque table on trouvera 2 entrée,à les deux réseaux connecte directement à notre routeurs.</p>
-<p><strong>image (en cours)</strong></p>
-<p>Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les metriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)</p>
-<p><strong>image (en cours)</strong></p>
+<p>Au début chaque routeurs construit sa table de routage par défaut; sur chaque table on trouvera 2 entrées,à savoir les deux réseaux connectés directement à notre routeur.</p>
+<p><img alt="réseau avec RIPv1 " src="./img/RIPv1_Lab_table_routage.png" /></p>
+<p>Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les métriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)</p>
 <h2 id="diference-entre-v1-et-v2">Diference entre v1 et v2</h2>
 <ul>
-<li>le RIPv1 est ClassFull , le RIPv2 utilise CIDR</li>
-<li>L'authentification est ajoutée dans le RIPv2</li>
-<li>l'adresse de broadcast est differente dans la version 2</li>
+<li>
+<p>Le RIPv1 est ClassFull , le RIPv2 utilise CIDR</p>
+</li>
+<li>
+<p>L'authentification est ajoutée dans le RIPv2</p>
+</li>
+<li>
+<p>L'adresse de broadcast est differente dans la version 2</p>
+</li>
 </ul>
 <h2 id="configuration-sur-un-routeur-cisco">Configuration sur un routeur Cisco</h2>
 <div class="highlight"><pre><span></span><code>router# conf t
@@ -168,7 +173,7 @@ router(config)# network 192.168.2.0
 <li>pour verifier la configuration, on peut utiliser <code>show running-config | section rip</code> ou <code>show ip route</code></li>
 </ul>
 <h2 id="routing-loop">Routing Loop</h2>
-<p>Supposons qu'une interface est down (ex : F0/0 de R3) alors le reseau 192.168.4.0/24 n'est plus joignable. </p>
+<p>Supposons qu'une interface est down (ex : F0/0 de R3) alors le réseau 192.168.4.0/24 n'est plus joignable. </p>
 <p><strong>par defaut chaque routeur envoie periodiquement(30s fixe en version 1) sa table</strong></p>
 <p>et donc apres 30 seconde R3 envoie sa table à R2 sans l'entrée qui indique le réseau tombé et donc R2 ne met rien à jour. <strong>LE PROBLEME</strong> c'est quand R2 envoie sa table à R3 avec l'entree 192.168.4.0 et un metric 1 , R3 met à jour sa table en aojutant l'entree 192.168.4.0 et un metric 2. et cela cree une loop </p>
 <p><strong>Si un metric est fixé à 16, c-a-d c'est l'infinie on peut pas le rejoindre.</strong></p>
@@ -201,6 +206,13 @@ router(config)# network 192.168.2.0
 <li>add family : indique le type d'addresse (dans notre cas <code>2</code> pour IP)</li>
 </ul>
 <h2 id="shema-du-reseau">Shéma du réseau</h2>
+<p>L'idée de l'exploitaion est évidente, c'est le même shéma en-dessus, il faut juste ajouter une machine unix dans le réseau <code>192.168.1.0\24</code> , pour faire ca <code>gns3</code> offre 2 possibilite : </p>
+<ul>
+<li>Lier une VM qui est deja presente sur VirtualBox : dans la configuration de préference je sais pas pourquoi il ne détecte pas <code>VBoxManage.exe</code></li>
+<li>Utiliser un conteneur Docker : j'ai un problème de connexion que j'ai pas pu résoudre (j'ai testé un adapteur bridge avec conf de eth1 sur dhcp =&gt; ça marche pas !!).</li>
+</ul>
+<p>Donc pour le moment je peux pas tester ça tant que j'ai pas résolue ce problème de machine unix. </p>
+<p><strong>I HATE YOU GNS3</strong> </p>
               
             </div>
           </div><footer>
