@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>RIP - Wiki</title>
+    <title>Exploiatation du RIPv1 - Wiki</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "RIP";
+        var mkdocs_page_name = "Exploiatation du RIPv1";
         var mkdocs_page_input_path = "network/routage/rip.md";
         var mkdocs_page_url = null;
       </script>
@@ -67,7 +67,25 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" >Routage</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">RIP</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Exploiatation du RIPv1</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#fonctionnement">Fonctionnement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#diference-entre-v1-et-v2">Diference entre v1 et v2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-sur-un-routeur-cisco">Configuration sur un routeur Cisco</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#routing-loop">Routing Loop</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exploitation-du-ripv1">Exploitation du RIPv1 :</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#format-dun-packet-ripv1">Format d'un packet RIPv1</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#shema-du-reseau">Shéma du réseau</a>
+    </li>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ospf/">OSPF</a>
                 </li>
@@ -116,7 +134,7 @@
     <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Network</li>
           <li class="breadcrumb-item">Routage</li>
-      <li class="breadcrumb-item active">RIP</li>
+      <li class="breadcrumb-item active">Exploiatation du RIPv1</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -125,7 +143,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="rip-routing-information-protocol">RIP (Routing Information Protocol)</h1>
+<p><em>Dernière mise à jour : <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="8 novembre 2025 15:28:36 UTC"><span class="timeago" datetime="2025-11-08T15:28:36+00:00" locale="fr"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="8 novembre 2025 15:28:36 UTC">2025-11-08</span></em></p>
+<h2 id="fonctionnement">Fonctionnement</h2>
+<p>Imaginons la situation ci-dessous : </p>
+<p>au debut chaque routeurs construit sa table de routage par defaut; sur chaque table on trouvera 2 entrée,à les deux réseaux connecte directement à notre routeurs.</p>
+<p><strong>image (en cours)</strong></p>
+<p>Après activation du RIP, chaque routeur va copier sa table vers son voisin direct avec les metriques. (en supposant que nous avons configuré le R1 en premier les tables de R2 et R3 se mettent à jours)</p>
+<p><strong>image (en cours)</strong></p>
+<h2 id="diference-entre-v1-et-v2">Diference entre v1 et v2</h2>
+<ul>
+<li>le RIPv1 est ClassFull , le RIPv2 utilise CIDR</li>
+<li>L'authentification est ajoutée dans le RIPv2</li>
+<li>l'adresse de broadcast est differente dans la version 2</li>
+</ul>
+<h2 id="configuration-sur-un-routeur-cisco">Configuration sur un routeur Cisco</h2>
+<div class="highlight"><pre><span></span><code>router# conf t
+router(config)# router rip
+router(config)# version 2 // ou version 1
+router(config)# network 192.168.1.0
+router(config)# network 192.168.2.0
+</code></pre></div>
+<ul>
+<li>pour verifier la configuration, on peut utiliser <code>show running-config | section rip</code> ou <code>show ip route</code></li>
+</ul>
+<h2 id="routing-loop">Routing Loop</h2>
+<p>Supposons qu'une interface est down (ex : F0/0 de R3) alors le reseau 192.168.4.0/24 n'est plus joignable. </p>
+<p><strong>par defaut chaque routeur envoie periodiquement(30s fixe en version 1) sa table</strong></p>
+<p>et donc apres 30 seconde R3 envoie sa table à R2 sans l'entrée qui indique le réseau tombé et donc R2 ne met rien à jour. <strong>LE PROBLEME</strong> c'est quand R2 envoie sa table à R3 avec l'entree 192.168.4.0 et un metric 1 , R3 met à jour sa table en aojutant l'entree 192.168.4.0 et un metric 2. et cela cree une loop </p>
+<p><strong>Si un metric est fixé à 16, c-a-d c'est l'infinie on peut pas le rejoindre.</strong></p>
+<hr />
+<p>Les solution : 
+* Split horizon : Un routeur ne ré-annonce pas une route sur l'interface par laquelle il l'a reçue.
+* Route poising : lorsqu’une route tombe, on la marque comme inaccessible en utilisant un metric infini
+* Poison reverse : annule temporairement la règle du split horizon pour propager la route "empoisonnée".</p>
+<h2 id="exploitation-du-ripv1">Exploitation du RIPv1 :</h2>
+<p>L'idée ici c'est d'imaginer un réseaux qui utilise le RIPv1 comme protocole de routage est de voir est ce c'est possible de modifier certaines routes pour soit rediriger le traffic ou au moins empecher le réseau de fonctionner.</p>
+<p><strong>Les messages de RIPv1 sont envoyé en UDP port 520 en utilisant l'adresse de diffusion 255.255.255.255</strong></p>
+<h3 id="format-dun-packet-ripv1">Format d'un packet RIPv1</h3>
+<div class="highlight"><pre><span></span><code>+-------------------------------------------------------------+
+|   commande   |   version    |          must be zero         |
++-----+------+---------+--------------------------------------+
+|         add family          |          must be zero         |
++-------------------------------------------------------------+
+|                          network                            |
++-------------------------------------------------------------+
+|                        must be zero                         |
++-------------------------------------------------------------+
+|                          next hope                          |
++-------------------------------------------------------------+
+|                           metric                            |
++-------------------------------------------------------------+
+</code></pre></div>
+<ul>
+<li>commande : <code>0x01</code> represente un packet <strong>request</strong> et <code>0x02</code> represente une <strong>response</strong></li>
+<li>version : version du rip (dans notre cas <code>0x01</code>)</li>
+<li>add family : indique le type d'addresse (dans notre cas <code>2</code> pour IP)</li>
+</ul>
+<h2 id="shema-du-reseau">Shéma du réseau</h2>
               
             </div>
           </div><footer>
