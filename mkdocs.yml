@@ -9,6 +9,7 @@ nav:
     
   - Network:
     - Ethernet TCP IP: network/ethernetTcpIp.md
+    - Active Directory Kerberos et AS_REQ : network/kerb.md
     - SSH: network/ssh.md
     - DNS: network/dns.md
     - Routage:

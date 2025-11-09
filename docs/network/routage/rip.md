@@ -82,7 +82,7 @@ L'idée ici c'est d'imaginer un réseaux qui utilise le RIPv1 comme protocole de
 * version : version du rip (dans notre cas `0x01`)
 * add family : indique le type d'addresse (dans notre cas `2` pour IP)
 
-## Shéma du réseau 
+### Shéma du réseau 
 
 L'idée de l'exploitaion est évidente, c'est le même shéma en-dessus, il faut juste ajouter une machine unix dans le réseau `192.168.1.0\24` , pour faire ca `gns3` offre 2 possibilite : 
 
